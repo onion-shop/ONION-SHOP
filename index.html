@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Onion Shop — предзаказы из Китая</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Onion Shop — предзаказы одежды, обуви и аксессуаров из Китая. Как работает предзаказ, сроки, тарифы доставки, калькулятор и мини-игра на Хэллоуин.">
+<meta name="theme-color" content="#0f0818">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Onion Shop">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:title" content="Onion Shop — предзаказы из Китая">
+<meta property="og:description" content="Как работает предзаказ, сроки, тарифы и калькулятор доставки. Хэллоуин в Onion Shop!">
+<meta property="og:image" content="icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@600;700;800&family=Rubik+Wet+Paint&display=swap">
+<script>
+/* Тема до отрисовки, чтобы не было вспышки; хэллоуинские украшения включаются сразу */
+(function(){var d=document.documentElement;d.classList.add('s-hw');try{var m=localStorage.getItem('onion.theme');if(m==='dark'||m==='light')d.setAttribute('data-ui',m);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.2 12 3.5l8.5 6.7V19a1.5 1.5 0 0 1-1.5 1.5h-4.2v-5.8H9.2v5.8H5A1.5 1.5 0 0 1 3.5 19z"/></symbol><symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.6"/><rect x="8" y="5.8" width="8" height="3.6" rx=".9"/><path d="M8.6 13.3h.01M12 13.3h.01M15.4 13.3h.01M8.6 17h.01M12 17h.01M15.4 17h.01" stroke-width="2.4"/></symbol><symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><rect x="4.5" y="4" width="15" height="17.5" rx="2.4"/><path d="M9 4V3.2c0-.4.3-.7.7-.7h4.6c.4 0 .7.3.7.7V4"/><path d="M8.5 10h7M8.5 13.8h7M8.5 17.6h4.2"/></symbol><symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="M9.3 9.4a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.5-2.7 4.1"/><path d="M12 17.6h.01" stroke-width="2.4"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></symbol><symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2.8 20.5 7.4v9.2L12 21.2l-8.5-4.6V7.4z"/><path d="M3.5 7.4 12 12l8.5-4.6M12 12v9.2"/><path d="m7.8 5.1 8.5 4.6"/></symbol><symbol id="i-box-check" viewBox="0 0 24 24"><path d="M20.5 11V7.4L12 2.8 3.5 7.4v9.2L12 21.2l1.6-.9"/><path d="M3.5 7.4 12 12l8.5-4.6M12 12v9.2"/><path d="m15.8 18.2 1.9 1.9 3.5-3.6"/></symbol><symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.8 16.8V6.5c0-.6.5-1 1-1h9.7c.6 0 1 .4 1 1v10.3"/><path d="M14.5 9h3.6l3.1 3.6v4.2h-1.6"/><path d="M9.2 16.8h5.3"/><circle cx="6.8" cy="17.2" r="2"/><circle cx="17.4" cy="17.2" r="2"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="M12 7v5l3.2 2"/></symbol><symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.6"/><path d="M12 13.5V9.8M9.8 2.5h4.4M18.4 6.6l1.5-1.5"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.6"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.2h.01M12 17.2h.01" stroke-width="2.3"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.6"/><path d="m20.2 20.2-4.4-4.4"/></symbol><symbol id="i-camera" viewBox="0 0 24 24"><path d="M3.5 8.6c0-1.1.9-2 2-2h2.1l1.5-2.4h5.8l1.5 2.4h2.1c1.1 0 2 .9 2 2v8.9c0 1.1-.9 2-2 2h-13c-1.1 0-2-.9-2-2z"/><circle cx="12" cy="12.8" r="3.4"/></symbol><symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.6"/><path d="M2.5 9.8h19M6.3 15h4"/></symbol><symbol id="i-edit" viewBox="0 0 24 24"><path d="M12.8 3.5H6.2c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h11.6c1.1 0 2-.9 2-2v-6.6"/><path d="M18.3 2.9a2 2 0 0 1 2.8 2.8l-7.6 7.6-3.6.8.8-3.6z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24"><path d="M6.3 8.6h11.4l2.4 11.9H3.9z"/><path d="M9.5 8.6a2.5 2.5 0 1 1 5 0"/><path d="M12 13.2v3"/></symbol><symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="m8 12.3 2.7 2.7 5.4-5.5"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 4 2.6 17.6a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4a2 2 0 0 0-3.4 0z"/><path d="M12 9.4v4.2"/><path d="M12 17h.01" stroke-width="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="M12 11v5.6"/><path d="M12 7.6h.01" stroke-width="2.4"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.6 4.6 5.6v5.9c0 4.6 3.1 8.3 7.4 9.9 4.3-1.6 7.4-5.3 7.4-9.9V5.6z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.6"/><path d="M8 10.5V7.6a4 4 0 0 1 8 0v2.9"/><path d="M12 14.6v2.4"/></symbol><symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.8" cy="15.6" r="4.4"/><path d="m10.9 12.5 8.6-8.6M16.6 6.8l2.6 2.6M14.2 9.2l2.1 2.1"/></symbol><symbol id="i-logout" viewBox="0 0 24 24"><path d="M9.5 20.5H5.6c-1.1 0-2-.9-2-2v-13c0-1.1.9-2 2-2h3.9"/><path d="m15.8 16.6 4.7-4.6-4.7-4.6M20.5 12H9.3"/></symbol><symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4.6" rx="1.2"/><path d="M5 12.6v6.9c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-6.9M12 8v12.5"/><path d="M12 8c-1.4-3.6-5.6-4.6-5.6-1.9C6.4 7.5 8.8 8 12 8zm0 0c1.4-3.6 5.6-4.6 5.6-1.9 0 1.4-2.4 1.9-5.6 1.9z"/></symbol><symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8.6V6.6c0-.8.7-1.5 1.5-1.5h15c.8 0 1.5.7 1.5 1.5v2a3.4 3.4 0 0 0 0 6.8v2c0 .8-.7 1.5-1.5 1.5h-15c-.8 0-1.5-.7-1.5-1.5v-2a3.4 3.4 0 0 0 0-6.8z"/><path d="M14.6 5.6v1.6M14.6 11.2v1.6M14.6 16.8v1.6"/></symbol><symbol id="i-percent" viewBox="0 0 24 24"><path d="M18.5 5.5 5.5 18.5"/><circle cx="7" cy="7" r="2.4"/><circle cx="17" cy="17" r="2.4"/></symbol><symbol id="i-crown" viewBox="0 0 24 24"><path d="m3.2 8 4.6 3.9L12 5.5l4.2 6.4L20.8 8l-1.9 10.2H5.1z"/><path d="M5.6 21h12.8"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.2 2.7 5.5 6 .9-4.3 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.3-4.3 6-.9z"/></symbol><symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.2 2.6 4.6 13.6H12l-1.2 7.8 8.6-11H12z"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.6" y="8.6" width="12.4" height="12.4" rx="2.6"/><path d="M15.4 8.6V5.6c0-1.1-.9-2-2-2H5.6c-1.1 0-2 .9-2 2v7.8c0 1.1.9 2 2 2h3"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.3 14.6A8.4 8.4 0 0 1 9.4 3.7a8.4 8.4 0 1 0 10.9 10.9z"/></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2.6" y="4" width="18.8" height="12.8" rx="2.2"/><path d="M8.6 20.6h6.8M12 16.8v3.8"/></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.2 12S5.6 5.2 12 5.2 21.8 12 21.8 12 18.4 18.8 12 18.8 2.2 12 2.2 12z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M10.6 5.3c.5-.1.9-.1 1.4-.1 6.4 0 9.8 6.8 9.8 6.8a17 17 0 0 1-2.3 3.2M6.6 6.7A16.7 16.7 0 0 0 2.2 12s3.4 6.8 9.8 6.8c1.9 0 3.6-.6 5-1.5"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2M3 3l18 18"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M20.8 11.8a8.6 8.6 0 0 1-12.7 7.6L3 20.9l1.6-4.9A8.6 8.6 0 1 1 20.8 11.8z"/><path d="M8.4 11.9h.01M12.1 11.9h.01M15.8 11.9h.01" stroke-width="2.4"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M21.2 3.2 2.8 10.4l7 2.6 2.6 7z"/><path d="m9.8 13 5.6-5.4"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M5.1 3.5h3.4l1.8 4.5-2.3 1.5a11 11 0 0 0 6.5 6.5l1.5-2.3 4.5 1.8v3.4c0 .9-.7 1.6-1.6 1.6A16.6 16.6 0 0 1 3.5 5.1c0-.9.7-1.6 1.6-1.6z"/></symbol><symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3.6 10.2v3.6c0 .6.4 1 1 1h2.6l7.3 4.6V4.6L7.2 9.2H4.6c-.6 0-1 .4-1 1z"/><path d="M18 9a4.2 4.2 0 0 1 0 6M7.4 14.8 9 20.4h2.6"/></symbol><symbol id="i-play" viewBox="0 0 24 24"><rect x="2.8" y="4.6" width="18.4" height="14.8" rx="3.4"/><path d="m10 9 5 3-5 3z"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.4s-7-6.1-7-11.4a7 7 0 0 1 14 0c0 5.3-7 11.4-7 11.4z"/><circle cx="12" cy="10" r="2.6"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.2" r="3.6"/><path d="M2.6 20.2a6.4 6.4 0 0 1 12.8 0"/><path d="M16 4.7a3.6 3.6 0 0 1 0 7M21.4 20.2a6.4 6.4 0 0 0-3.8-5.9"/></symbol><symbol id="i-bag" viewBox="0 0 24 24"><path d="M5.2 7.6h13.6l-1 13H6.2z"/><path d="M9 10.2V6.4a3 3 0 0 1 6 0v3.8"/></symbol><symbol id="i-warehouse" viewBox="0 0 24 24"><path d="M3 20.5V9l9-5.5L21 9v11.5"/><path d="M7 20.5v-8h10v8M7 16.5h10"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="M2.7 12h18.6M12 2.7c2.5 2.6 3.9 5.9 3.9 9.3s-1.4 6.7-3.9 9.3c-2.5-2.6-3.9-5.9-3.9-9.3s1.4-6.7 3.9-9.3z"/></symbol><symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19.4 7.4V5.6c0-.8-.7-1.5-1.5-1.5H5.6a2.1 2.1 0 0 0-2.1 2.1v11.6c0 1.2 1 2.2 2.2 2.2h12.2c.8 0 1.5-.7 1.5-1.5v-1.9"/><path d="M3.5 6.2c0 .7.6 1.2 1.3 1.2h15.7c.6 0 1 .4 1 1v6.2c0 .6-.4 1-1 1H16a2.6 2.6 0 0 1 0-5.2h5.5"/></symbol><symbol id="i-yuan" viewBox="0 0 24 24"><path d="m7 4 5 7.2L17 4M12 11.2V20M8 13h8M8 16.5h8"/></symbol><symbol id="i-dollar" viewBox="0 0 24 24"><path d="M12 2.6v18.8M16.4 6.6c-.6-1.4-2.1-2-4.4-2-2.5 0-4.4 1.2-4.4 3.3 0 4.6 9 2.5 9 7.5 0 2.1-2 3.4-4.6 3.4-2.5 0-4.3-.8-4.9-2.5"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 18.8V5.2c0-1.2 1-2.2 2.2-2.2H20v14.6H6.2C5 17.6 4 18.6 4 19.8S5 22 6.2 22H20"/><path d="M8.5 7.5h7"/></symbol><symbol id="i-route" viewBox="0 0 24 24"><circle cx="5.8" cy="18.2" r="2.4"/><circle cx="18.2" cy="5.8" r="2.4"/><path d="M8.2 18.2h7.6a3.1 3.1 0 0 0 0-6.2H8.2a3.1 3.1 0 0 1 0-6.2h7.6"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5"/></symbol><symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5.4 2.8h13.2v18.4l-3.3-2-3.3 2-3.3-2-3.3 2z"/><path d="M8.8 7.6h6.4M8.8 11.4h6.4M8.8 15.2h3.6"/></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6.5h9M18.5 6.5H20M4 12h2.5M11 12h9M4 17.5h11M19.5 17.5H20"/><circle cx="15.8" cy="6.5" r="2.3"/><circle cx="8.8" cy="12" r="2.3"/><circle cx="17.3" cy="17.5" r="2.3"/></symbol><symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 3.5h8.2l9 9a1.6 1.6 0 0 1 0 2.2l-6 6a1.6 1.6 0 0 1-2.2 0l-9-9z"/><circle cx="8" cy="8" r="1.6"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20.2 11.3A8.3 8.3 0 1 0 17.7 17.8"/><path d="M20.5 4.3v7h-7"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 6.8h16M9.2 6.8V4.4h5.6v2.4M6.2 6.8l.9 13.7h9.8l.9-13.7"/><path d="M10 10.8v5.8M14 10.8v5.8"/></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11 3.2 12.9 8l4.8 1.9-4.8 1.9L11 16.6l-1.9-4.8L4.3 9.9 9.1 8z"/><path d="m18.3 14.4.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9.3 4.9L12 12.8 2.7 7.9z"/><path d="m2.7 12.2 9.3 4.9 9.3-4.9M2.7 16.4l9.3 4.9 9.3-4.9"/></symbol><symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M6.8 2.8h10.4M6.8 21.2h10.4"/><path d="M8 2.8v2.6c0 1.3.6 2.5 1.6 3.2L12 12l2.4-3.4c1-.7 1.6-1.9 1.6-3.2V2.8M8 21.2v-2.6c0-1.3.6-2.5 1.6-3.2L12 12l2.4 3.4c1 .7 1.6 1.9 1.6 3.2v2.6"/></symbol><symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 15.4h18l-2.6 4.8H5.6z"/><path d="M6 15.4V9.8h12v5.6M9.4 9.8V6.4h5.2v3.4M12 3.4v3"/></symbol><symbol id="i-id" viewBox="0 0 24 24"><rect x="2.6" y="5" width="18.8" height="14" rx="2.6"/><circle cx="8.6" cy="11" r="2.1"/><path d="M5.5 16a3.1 3.1 0 0 1 6.2 0M14.2 10h4.4M14.2 13.6h3"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.6" y="5" width="18.8" height="14" rx="2.6"/><path d="m3.2 7 8.8 6 8.8-6"/></symbol><symbol id="i-smartphone" viewBox="0 0 24 24"><rect x="6" y="2.6" width="12" height="18.8" rx="2.6"/><path d="M10.8 18h2.4"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3.6v11.6M7.2 10.6 12 15.4l4.8-4.8M4.6 20.4h14.8"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7.5 3.5h9v5.8a4.5 4.5 0 0 1-9 0z"/><path d="M7.5 5.5H4.6v1.4a3.2 3.2 0 0 0 3.2 3.2M16.5 5.5h2.9v1.4a3.2 3.2 0 0 1-3.2 3.2M12 13.8v3.4M8.4 20.5h7.2l-.8-3.3H9.2z"/></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21.4c-3.9 0-6.6-2.7-6.6-6.3 0-4.4 4.2-6.2 4.2-11 2.9 1.7 4.4 4.3 4.6 7.2.9-.5 1.6-1.4 1.9-2.6 1.5 1.5 2.5 3.9 2.5 6.4 0 3.6-2.7 6.3-6.6 6.3z"/><path d="M12 21.4c-1.6 0-2.8-1.1-2.8-2.7 0-2 2-2.8 2.8-4.5.9 1.7 2.8 2.5 2.8 4.5 0 1.6-1.2 2.7-2.8 2.7z"/></symbol><symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4.2 4.2 0 0 0 6 0l3-3a4.2 4.2 0 0 0-6-6l-1.2 1.2"/><path d="M14 10a4.2 4.2 0 0 0-6 0l-3 3a4.2 4.2 0 0 0 6 6l1.2-1.2"/></symbol><symbol id="i-pumpkin" viewBox="0 0 24 24"><path d="M12 7c-1.3-1.5-4.6-1.8-6.5 0-2.1 1.9-2.6 4.8-2.1 7.6.6 3.4 3 5.4 5.6 5.4 1.1 0 2.1-.4 3-1 .9.6 1.9 1 3 1 2.6 0 5-2 5.6-5.4.5-2.8 0-5.7-2.1-7.6-1.9-1.8-5.2-1.5-6.5 0z"/><path d="M12 7c-1.5 2.6-1.5 10 0 12.9M12 7c1.5 2.6 1.5 10 0 12.9"/><path d="M12 7c-.1-1.7.6-3.1 2.4-4"/></symbol><symbol id="i-bat" viewBox="0 0 24 24"><path d="M12 8.6c-.7 0-1.3-.6-1.5-1.5l-.6 1C8 6.6 5.2 6.4 2.5 7.8c1.5.7 2.4 2 2.3 3.6 1.3-.6 2.7-.4 3.6.6.7-.8 1.9-1 2.8-.3l.8 3.6.8-3.6c.9-.7 2.1-.5 2.8.3.9-1 2.3-1.2 3.6-.6-.1-1.6.8-2.9 2.3-3.6-2.7-1.4-5.5-1.2-7.4.3l-.6-1c-.2.9-.8 1.5-1.5 1.5z"/></symbol><symbol id="i-ghost" viewBox="0 0 24 24"><path d="M5.5 20.5V11a6.5 6.5 0 0 1 13 0v9.5l-2.2-1.6-2.1 1.6-2.2-1.6-2.2 1.6-2.1-1.6z"/><path d="M9.7 10.6h.01M14.3 10.6h.01" stroke-width="2.6"/></symbol><symbol id="i-admin" viewBox="0 0 24 24"><circle cx="9.5" cy="7.8" r="3.8"/><path d="M3 20.5a6.5 6.5 0 0 1 9.4-5.8"/><path d="M17.5 12.3 14 13.8v2.6c0 2.2 1.5 3.8 3.5 4.4 2-.6 3.5-2.2 3.5-4.4v-2.6z"/></symbol><symbol id="i-history" viewBox="0 0 24 24"><path d="M3.6 12a8.4 8.4 0 1 0 2.5-6"/><path d="M3.6 4.2v4.4H8"/><path d="M12 7.8V12l3 1.8"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-1.3-1.2-1.6-1.2-2.8 0-1 .8-1.8 1.8-1.8h2.2A4.4 4.4 0 0 0 21 10.3C21 6.2 17 3 12 3z"/><path d="M7.4 11.6h.01M9.6 7.4h.01M14.6 7.4h.01" stroke-width="2.6"/></symbol><symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="m5.4 5.4 13.2 13.2"/></symbol><symbol id="i-plus-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="M12 8v8M8 12h8"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="M8 12h8"/></symbol><symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="9" cy="6.8" rx="5.6" ry="2.6"/><path d="M3.4 6.8v4.4c0 1.4 2.5 2.6 5.6 2.6 1.1 0 2.1-.1 3-.4"/><path d="M3.4 11.2v4.4c0 1.4 2.5 2.6 5.6 2.6.9 0 1.7-.1 2.5-.3"/><ellipse cx="16.6" cy="13.2" rx="4.4" ry="2.1"/><path d="M12.2 13.2v4c0 1.2 2 2.1 4.4 2.1s4.4-.9 4.4-2.1v-4"/></symbol><symbol id="i-frame" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="10.4" r="2.8"/><path d="M7.4 18a5 5 0 0 1 9.2 0"/></symbol><symbol id="i-cauldron" viewBox="0 0 24 24"><path d="M3.6 9.6h16.8"/><path d="M5.3 9.6c-.7 1-1 2.2-1 3.5 0 3.9 3.5 6.6 7.7 6.6s7.7-2.7 7.7-6.6c0-1.3-.3-2.5-1-3.5"/><path d="M7.6 19.1 6.4 21M16.4 19.1l1.2 1.9"/><circle cx="9.6" cy="6" r="1.4"/><circle cx="13.8" cy="4" r="1"/><circle cx="14.9" cy="7.2" r=".7"/></symbol><symbol id="i-hat" viewBox="0 0 24 24"><path d="M2.6 18.6c3.4 2 15.4 2 18.8 0"/><path d="M5.9 18.3 10.3 7.8c1-2.6 2.7-4.1 6.4-4.6-2 1.5-2.6 3.4-2 5.4l3.5 9.7"/><path d="M7.6 14.4c2.9.9 6 .9 8.9 0"/></symbol><symbol id="i-candy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M8.3 10.2 4 7.4l.7 4.6-.7 4.6 4.3-2.8M15.7 10.2 20 7.4l-.7 4.6.7 4.6-4.3-2.8"/><path d="M10.2 8.4c1.4 1.6 2.2 4.8 1.6 7.4"/></symbol><symbol id="i-spider" viewBox="0 0 24 24"><path d="M12 2.2v5.6"/><circle cx="12" cy="11" r="3.2"/><circle cx="12" cy="16.2" r="2"/><path d="M9.1 9.6 6.4 7.6 4.3 8.6M14.9 9.6l2.7-2 2.1 1M8.8 11.6H5.8l-1.9 2M15.2 11.6h3l1.9 2M9.6 13.4l-2.4 2.4.4 2.6M14.4 13.4l2.4 2.4-.4 2.6"/></symbol><symbol id="i-web" viewBox="0 0 24 24"><path d="M3 3h18M3 3l16.6 6.9M3 3l12.7 12.7M3 3l6.9 16.6M3 3v18"/><path d="M9 3Q7.8 4 8.5 5.3Q7.1 5.7 7.2 7.2Q5.7 7.1 5.3 8.5Q4 7.8 3 9M14 3Q11.8 4.8 13.2 7.2Q10.5 8 10.8 10.8Q8 10.5 7.2 13.2Q4.8 11.8 3 14M19 3Q15.9 5.6 17.8 9.1Q13.9 10.3 14.3 14.3Q10.3 13.9 9.1 17.8Q5.6 15.9 3 19"/></symbol><symbol id="i-candle" viewBox="0 0 24 24"><path d="M8.4 10.6h7.2v9.6c0 .6-.4 1-1 1H9.4c-.6 0-1-.4-1-1z"/><path d="M12 10.6V8.8"/><path d="M12 2.6c1.4 1.6 2.1 2.8 2.1 3.8a2.1 2.1 0 0 1-4.2 0c0-1 .7-2.2 2.1-3.8z"/><path d="M15.6 13.2c-1 .5-1.4 1.4-1.4 2.6"/></symbol><symbol id="i-potion" viewBox="0 0 24 24"><path d="M9.8 2.8h4.4M10.6 2.8v4.4a7 7 0 1 0 2.8 0V2.8"/><path d="M5.5 14.4c2.2-1 4.3-1 6.5 0s4.3 1 6.5 0"/><path d="M10 17.4h.01M13.8 16.6h.01" stroke-width="2.4"/></symbol><symbol id="i-crystal" viewBox="0 0 24 24"><circle cx="12" cy="10.2" r="6.9"/><path d="M6.4 21.2h11.2l-1.7-3.8H8.1z"/><path d="M8.7 8.2a3.9 3.9 0 0 1 3-2.7"/></symbol><symbol id="i-broom" viewBox="0 0 24 24"><path d="M21 3 12.6 11.4"/><path d="m9.9 10.3 3.8 3.8"/><path d="M10.6 11c-2.7 1.3-5.4 4.4-7.2 9.6 5.2-1.8 8.3-4.5 9.6-7.2"/><path d="m8.6 14.3-3.3 4.4M10.4 15.6l-2.9 2.9"/></symbol><symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M7.2 7.4h9.6a4.6 4.6 0 0 1 4.5 5.5l-.9 4.4a2.4 2.4 0 0 1-4.3 1L14.6 16H9.4l-1.5 2.3a2.4 2.4 0 0 1-4.3-1l-.9-4.4a4.6 4.6 0 0 1 4.5-5.5z"/><path d="M7.6 10.8v3.2M6 12.4h3.2"/><path d="M15.6 11.2h.01M17.6 13.4h.01" stroke-width="2.6"/></symbol><symbol id="i-tomb" viewBox="0 0 24 24"><path d="M6 20.6V9.6a6 6 0 0 1 12 0v11"/><path d="M3.4 20.6h17.2M12 8.6v6.4M9.4 11h5.2"/></symbol><symbol id="bat-shape" viewBox="0 0 100 42"><path d="M50 18C47 14 46 10 47 5L43.5 10C40 8 36 9 33 12 27 8 14 6 2 14 10 15 14 20 14 27 19 24 25 25 28 30 32 27 38 27 41 31 44 30 47 33 50 39 53 33 56 30 59 31 62 27 68 27 72 30 75 25 81 24 86 27 86 20 90 15 98 14 86 6 73 8 67 12 64 9 60 8 56.5 10L53 5C54 10 53 14 50 18Z"/></symbol></defs></svg>
+
+<a class="skip" href="#main">Перейти к содержимому</a>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#top" data-nav aria-label="Onion Shop — на главную">
+      <img class="logo" src="logo.png" alt="" width="38" height="38">
+      <span>ONION SHOP</span>
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#how" data-nav>Как это работает</a>
+      <a href="#timing" data-nav>Сроки</a>
+      <a href="#tariffs" data-nav>Тарифы</a>
+      <a href="#calc" data-nav>Калькулятор</a>
+      <a href="#game" data-nav class="nav-game"><svg class="i" aria-hidden="true"><use href="#i-pumpkin"/></svg>Игра</a>
+      <a href="#faq" data-nav>Вопросы</a>
+      <a href="#contacts" data-nav>Контакты</a>
+    </nav>
+    <div class="hdr-act">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Сменить тему">
+        <svg class="i only-dark"><use href="#i-sun"/></svg><svg class="i only-light"><use href="#i-moon"/></svg>
+      </button>
+      <a class="btn btn-sm hdr-cta" href="https://t.me/OnionShop_Support" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg><span>Написать</span></a>
+      <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Открыть меню">
+        <svg class="i b-open"><use href="#i-menu"/></svg><svg class="i b-close"><use href="#i-x"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mnav" id="mnav" hidden aria-label="Меню">
+    <div class="wrap mnav-in">
+      <a href="#what" data-nav><svg class="i" aria-hidden="true"><use href="#i-ghost"/></svg>Что такое предзаказ</a>
+      <a href="#how" data-nav><svg class="i" aria-hidden="true"><use href="#i-broom"/></svg>Как это работает</a>
+      <a href="#timing" data-nav><svg class="i" aria-hidden="true"><use href="#i-candle"/></svg>Сроки доставки</a>
+      <a href="#price" data-nav><svg class="i" aria-hidden="true"><use href="#i-cauldron"/></svg>Из чего складывается цена</a>
+      <a href="#tariffs" data-nav><svg class="i" aria-hidden="true"><use href="#i-hat"/></svg>Тарифы</a>
+      <a href="#calc" data-nav><svg class="i" aria-hidden="true"><use href="#i-crystal"/></svg>Калькулятор</a>
+      <a href="#receive" data-nav><svg class="i" aria-hidden="true"><use href="#i-pumpkin"/></svg>Получение заказа</a>
+      <a href="#game" data-nav><svg class="i" aria-hidden="true"><use href="#i-gamepad"/></svg>Мини-игра</a>
+      <a href="#faq" data-nav><svg class="i" aria-hidden="true"><use href="#i-potion"/></svg>Частые вопросы</a>
+      <a href="#contacts" data-nav><svg class="i" aria-hidden="true"><use href="#i-bat"/></svg>Контакты</a>
+      <button class="install" type="button" data-install hidden><svg class="i" aria-hidden="true"><use href="#i-download"/></svg>Установить приложение</button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="h-hero">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="hw-deco hw-only" aria-hidden="true">
+      <svg class="hw-web" viewBox="0 0 170 170"><path d="M0 0L169.4 14.8M0 0L154.1 71.8M0 0L120.2 120.2M0 0L71.8 154.1M0 0L14.8 169.4M33.9 3.0Q26.5 7.1 30.8 14.4Q22.5 15.7 24.0 24.0Q15.7 22.5 14.4 30.8Q7.1 26.5 3.0 33.9M65.7 5.8Q51.5 13.8 59.8 27.9Q43.7 30.6 46.7 46.7Q30.6 43.7 27.9 59.8Q13.8 51.5 5.8 65.7M99.6 8.7Q78.0 20.9 90.6 42.3Q66.1 46.3 70.7 70.7Q46.3 66.1 42.3 90.6Q20.9 78.0 8.7 99.6M135.5 11.9Q106.1 28.4 123.3 57.5Q90.0 63.0 96.2 96.2Q63.0 90.0 57.5 123.3Q28.4 106.1 11.9 135.5"/></svg>
+      <div class="hw-moon"><i></i><i></i><i></i></div>
+      <svg class="hw-bat b1" viewBox="0 0 100 42"><use href="#bat-shape"/></svg>
+      <svg class="hw-bat b2" viewBox="0 0 100 42"><use href="#bat-shape"/></svg>
+      <svg class="hw-bat b3" viewBox="0 0 100 42"><use href="#bat-shape"/></svg>
+      <div class="fog f1"></div><div class="fog f2"></div>
+    </div>
+    <button class="hw-spider hw-only" type="button" tabindex="-1" aria-hidden="true"><span class="thread"></span><svg viewBox="0 0 40 40"><g fill="#1e0f35" stroke="#1e0f35" stroke-width="2" stroke-linecap="round"><path fill="none" d="M14.5 15 7 9.5 4 13M25.5 15 33 9.5l3 3.5M13.5 19H6l-3 4M26.5 19H34l3 4M14.5 23l-5.5 6v5M25.5 23l5.5 6v5"/><ellipse cx="20" cy="16" rx="7" ry="8"/><circle cx="20" cy="27" r="5"/></g><circle cx="17.7" cy="27.6" r="1.4" fill="#ff8a1f"/><circle cx="22.3" cy="27.6" r="1.4" fill="#ff8a1f"/></svg></button>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="pill" id="heroPill"><svg class="i" aria-hidden="true"><use href="#i-pumpkin"/></svg><span>Предзаказы одежды, обуви и аксессуаров</span></span>
+          <h1 id="h-hero">Предзаказы <em>из&nbsp;Китая</em></h1>
+          <p class="sub">Тарифы, доставка и расчёт стоимости. Вся информация о предзаказах в одном месте.</p>
+          <div class="row-btns">
+            <a class="btn btn-glow" href="#what" data-nav>Подробнее <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a class="btn btn-ghost" href="#calc" data-nav><svg class="i" aria-hidden="true"><use href="#i-crystal"/></svg>Рассчитать доставку</a>
+          </div>
+          <ul class="facts">
+            <li><svg class="i" aria-hidden="true"><use href="#i-timer"/></svg>Выкуп за 12&nbsp;часов</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-search"/></svg>Проверка на брак</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg>Фотоотчёт бесплатно</li>
+          </ul>
+        </div>
+
+        <div class="visual" data-globe aria-hidden="true">
+          <canvas></canvas>
+          <span class="pin-lbl" data-pin="from"><svg class="i" aria-hidden="true"><use href="#i-warehouse"/></svg>Склад в Китае</span>
+          <span class="pin-lbl to" data-pin="to"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>К вам</span>
+          <svg class="parcel" viewBox="0 0 120 140">
+            <defs>
+              <linearGradient id="bxTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c79bff"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+              <linearGradient id="bxL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b21b6"/><stop offset="1" stop-color="#2e1065"/></linearGradient>
+              <linearGradient id="bxR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4c1d95"/><stop offset="1" stop-color="#1e0a45"/></linearGradient>
+              <radialGradient id="bxSh"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+            </defs>
+            <ellipse class="bx-shadow" cx="60" cy="130" rx="46" ry="8" fill="url(#bxSh)"/>
+            <g class="bx">
+              <polygon points="60,20 110,45 60,70 10,45" fill="url(#bxTop)"/>
+              <polygon points="10,45 60,70 60,125 10,100" fill="url(#bxL)"/>
+              <polygon points="60,70 110,45 110,100 60,125" fill="url(#bxR)"/>
+              <polygon points="28.7,35.6 41.3,29.4 91.3,54.4 78.7,60.6" fill="#ffa94d" opacity=".95"/>
+              <polygon points="78.7,60.6 91.3,54.4 91.3,109.4 78.7,115.6" fill="#ff7a18" opacity=".85"/>
+              <path d="M60 70 110 45M60 70v55M60 70 10 45" stroke="#e9d5ff" stroke-opacity=".35" stroke-width="1" fill="none"/>
+              <image href="logo.png" x="0" y="0" width="26" height="26" transform="matrix(1,.5,0,1,22,62)"/>
+            </g>
+          </svg>
+          <svg class="hw-pumpkin hw-only" viewBox="0 0 120 112" aria-hidden="true">
+            <defs>
+              <radialGradient id="pkA" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#ffb347"/><stop offset=".6" stop-color="#ff7a18"/><stop offset="1" stop-color="#c2410c"/></radialGradient>
+              <radialGradient id="pkB" cx=".5" cy=".35" r=".8"><stop offset="0" stop-color="#ffc56b"/><stop offset=".55" stop-color="#ff8a1f"/><stop offset="1" stop-color="#d9480f"/></radialGradient>
+              <radialGradient id="pkGlow"><stop offset="0" stop-color="#fff3b0"/><stop offset=".6" stop-color="#ffd166"/><stop offset="1" stop-color="#ff9f1c"/></radialGradient>
+              <radialGradient id="pkSh"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+            </defs>
+            <ellipse cx="60" cy="104" rx="44" ry="6" fill="url(#pkSh)"/>
+            <path d="M57 26c0-9 3-15 10-19l4 4c-5 3-7 8-7 15z" fill="#4d7c0f"/>
+            <path d="M66 14c8-5 17-3 21 3-7 0-13 1-18 4z" fill="#65a30d"/>
+            <ellipse cx="34" cy="64" rx="27" ry="36" fill="url(#pkA)"/>
+            <ellipse cx="86" cy="64" rx="27" ry="36" fill="url(#pkA)"/>
+            <ellipse cx="60" cy="63" rx="30" ry="39" fill="url(#pkB)"/>
+            <path d="M47 30c-6 10-7 55 0 70M73 30c6 10 7 55 0 70" stroke="#c2410c" stroke-opacity=".45" stroke-width="2" fill="none"/>
+            <g class="pk-face" fill="url(#pkGlow)">
+              <path d="M38 52l12-8 3 13z"/><path d="M82 52l-12-8-3 13z"/>
+              <path d="M60 60l-5 9h10z"/>
+              <path d="M33 74c8 10 46 10 54 0l-6 12-6-5-5 7-6-6-6 6-5-7-6 5z"/>
+            </g>
+          </svg>
+          <div class="parcel-card">
+            <div class="pc-top"><span class="pc-dot"></span><b>Посылка в пути</b><span class="num" data-parcel-pct>0%</span></div>
+            <div class="pc-bar"><span data-parcel-bar></span></div>
+            <small>Склад в Китае → к вам</small>
+          </div>
+        </div>
+      </div>
+
+      <nav class="tiles" aria-label="Быстрые разделы">
+        <a class="tile" href="#calc" data-nav><span class="ico ico-lg"><svg class="i" aria-hidden="true"><use href="#i-crystal"/></svg></span>Расчёт стоимости</a>
+        <a class="tile" href="#timing" data-nav><span class="ico ico-lg"><svg class="i" aria-hidden="true"><use href="#i-broom"/></svg></span>Доставка</a>
+        <a class="tile" href="#tariffs" data-nav><span class="ico ico-lg"><svg class="i" aria-hidden="true"><use href="#i-hat"/></svg></span>Тарифы</a>
+        <a class="tile tile-game" href="#game" data-nav><span class="ico ico-lg"><svg class="i" aria-hidden="true"><use href="#i-gamepad"/></svg></span>Мини-игра</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Что такое предзаказ -->
+  <section id="what" class="band" aria-labelledby="h-what">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-ghost"/></svg>Основы</span>
+        <h2 id="h-what">Что такое предзаказ</h2>
+      </div>
+      <div class="define">
+        <div class="quote">
+          <p class="term"><b>Предзаказ</b> (предварительный заказ) — способ покупки товара, при котором вы оформляете заказ до его поступления в продажу или до того, как он появится на складе.</p>
+          <p>У нас это выглядит так: вы выбираете товар из представленных в нашем <strong>Telegram-канале</strong> и оплачиваете его выкуп у <strong>поставщика в Китае</strong>. Мы закупаем товар, принимаем его на свой склад в Китае, проверяем и отправляем вам.</p>
+          <p>Оплата проходит в два этапа: <strong>сначала товар</strong>, а когда посылку взвесят на складе — <strong>доставка</strong>.</p>
+        </div>
+        <div class="pc">
+          <div class="pc-card">
+            <h3><span class="ico ico-ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>Почему это удобно</h3>
+            <ul class="dots">
+              <li>Доступны модели, которых нет в обычных магазинах.</li>
+              <li>Вы покупаете по цене поставщика в Китае.</li>
+              <li>Цвет, размер и пожелания указываете сами.</li>
+              <li>Перед отправкой товар проверяют на брак и присылают фотоотчёт.</li>
+            </ul>
+          </div>
+          <div class="pc-card cons">
+            <h3><span class="ico ico-warn"><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg></span>Что нужно учитывать</h3>
+            <ul class="dots">
+              <li>Ждать придётся: в Россию обычно 3–7 недель.</li>
+              <li>Точная цена доставки известна только после взвешивания.</li>
+              <li>Примерить заранее нельзя, поэтому размер выбирайте внимательно.</li>
+              <li>Часть сроков и тарифов зависит от поставщика и логиста, а не от нас.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="gloss">
+        <h3><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Словарь терминов</h3>
+        <dl>
+          <div class="g"><dt><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-wallet"/></svg></span>Выкуп</dt><dd>Покупка товара у поставщика на ваши деньги. Оплачивается сразу при оформлении.</dd></div>
+          <div class="g"><dt><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg></span>Поставщик</dt><dd>Продавец в Китае, у которого мы закупаем товар.</dd></div>
+          <div class="g"><dt><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-warehouse"/></svg></span>Склад в Китае</dt><dd>Наш склад, куда поставщик привозит товар. Здесь его проверяют, фотографируют и упаковывают.</dd></div>
+          <div class="g"><dt><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-truck"/></svg></span>Логист</dt><dd>Компания-перевозчик, которая везёт посылку из Китая. Она устанавливает тарифы на доставку.</dd></div>
+          <div class="g"><dt><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-edit"/></svg></span>Карточка товара</dt><dd>Ваша заявка: товар, цвет, размер, пожелания и, если хотите, предложение по цене.</dd></div>
+          <div class="g"><dt><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg></span>Фотоотчёт</dt><dd>Фото товара на складе перед отправкой. Основные снимки бесплатные.</dd></div>
+          <div class="g"><dt><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-scale"/></svg></span>Физический вес</dt><dd>Сколько посылка весит на весах, в килограммах.</dd></div>
+          <div class="g"><dt><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-box"/></svg></span>Объёмный вес</dt><dd>Сколько места посылка занимает: длина × ширина × высота в см, делённые на коэффициент логиста.</dd></div>
+          <div class="g"><dt><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></span>ПВЗ</dt><dd>Пункт выдачи заказов, например СДЭК, куда приходит посылка внутри страны.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как работает -->
+  <section id="how" aria-labelledby="h-how">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-broom"/></svg>Процесс</span>
+        <h2 id="h-how">Как работает предзаказ</h2>
+        <p class="lead">Девять шагов от выбора товара до получения посылки. На каждом этапе мы на связи.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><span class="step-no">1</span><div class="step-body"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></span><div><h3>Выбираете товар</h3><p>Из позиций, опубликованных в нашем Telegram-канале ONION SHOP.</p></div></div></li>
+        <li class="step"><span class="step-no">2</span><div class="step-body"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-edit"/></svg></span><div><h3>Заполняете карточку товара</h3><p>Указываете цвет, размер и пожелания. Хотите поторговаться? Напишите желаемую цену, и мы попробуем договориться с поставщиком.</p></div></div></li>
+        <li class="step"><span class="step-no">3</span><div class="step-body"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg></span><div><h3>Оплачиваете выкуп</h3><p>Только стоимость самого товара. Доставку оплатите позже, когда посылку взвесят.</p></div></div></li>
+        <li class="step"><span class="step-no">4</span><div class="step-body"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-timer"/></svg></span><div><h3>Выкупаем товар <span class="chip">до 12 часов</span></h3><p>Закупаем товар у поставщика и просим отправить его как можно скорее.</p></div></div></li>
+        <li class="step"><span class="step-no">5</span><div class="step-body"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg></span><div><h3>Поставщик отправляет товар <span class="chip">обычно до 7 дней</span></h3><p>Считаются все дни, включая выходные. Задержки бывают, но редко.</p></div></div></li>
+        <li class="step"><span class="step-no">6</span><div class="step-body"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-truck"/></svg></span><div><h3>Товар едет на наш склад в Китае <span class="chip">3–5 дней</span></h3><p>Срок считается с момента отправки от поставщика.</p></div></div></li>
+        <li class="step"><span class="step-no">7</span><div class="step-body"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg></span><div><h3>Проверяем и делаем фотоотчёт <span class="chip">1–2 дня</span></h3><p>Команда склада осматривает товар на дефекты, фотографирует и оформляет посылку. Если найден брак, разбираемся с поставщиком и сообщаем вам, как будем решать вопрос.</p></div></div></li>
+        <li class="step"><span class="step-no">8</span><div class="step-body"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-scale"/></svg></span><div><h3>Взвешиваем и считаем доставку</h3><p>Логист определяет физический и объёмный вес посылки. Стоимость считается по большему из них, и вы оплачиваете доставку.</p></div></div></li>
+        <li class="step"><span class="step-no">9</span><div class="step-body"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-plane"/></svg></span><div><h3>Посылка едет к вам <span class="chip">18–32 дня в Россию</span></h3><p>Дальше СДЭК до ближайшего пункта выдачи, личная встреча или Авито Доставка.</p></div></div></li>
+      </ol>
+      <div class="note warn mt"><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg><p>Внимательно проверьте размер и цвет в карточке товара: после выкупа деньги уже переданы поставщику.</p></div>
+    </div>
+  </section>
+
+  <!-- Сроки -->
+  <section id="timing" class="band" aria-labelledby="h-timing">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-candle"/></svg>Сроки</span>
+        <h2 id="h-timing">Сколько ждать заказ</h2>
+        <p class="lead">Выберите направление: покажем, из каких этапов складывается срок и сколько всего ждать.</p>
+      </div>
+      <div class="seg" id="tDest" role="group" aria-label="Направление доставки"></div>
+      <div class="timing">
+        <div class="card t-card">
+          <div class="bar" id="tBar" aria-hidden="true"></div>
+          <div class="bar-scale num" id="tScale" aria-hidden="true"></div>
+          <ul class="t-list" id="tList"></ul>
+        </div>
+        <div class="total" aria-live="polite">
+          <span class="ico ico-lg"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+          <span class="k">Всего от оплаты до прибытия</span>
+          <span class="big num" id="tTotal">—</span>
+          <span class="wk" id="tWeeks"></span>
+          <p class="muted" id="tNote"></p>
+        </div>
+      </div>
+      <div class="note mt"><svg class="i" aria-hidden="true"><use href="#i-hourglass"/></svg><p>Могут быть задержки отправки от поставщика, которые растягивают сроки доставки. Это происходит редко.</p></div>
+    </div>
+  </section>
+
+  <!-- Цена -->
+  <section id="price" aria-labelledby="h-price">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-cauldron"/></svg>Стоимость</span>
+        <h2 id="h-price">Из чего складывается цена</h2>
+        <p class="lead">Итоговая сумма состоит из нескольких частей. Товар оплачивается сразу, доставка — после взвешивания на складе.</p>
+      </div>
+      <div class="formula">
+        <div class="f-item"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-bag"/></svg></span><span class="when">Сразу</span><h3>Товар</h3><p>Стоимость у поставщика в Китае — выкуп.</p></div>
+        <span class="plus" aria-hidden="true">+</span>
+        <div class="f-item"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-plane"/></svg></span><span class="when">После взвешивания</span><h3>Доставка из Китая</h3><p>Вес посылки × тариф логиста за 1&nbsp;кг, в долларах.</p></div>
+        <span class="plus" aria-hidden="true">+</span>
+        <div class="f-item"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-box"/></svg></span><span class="when">Вместе с доставкой</span><h3>Упаковка и оформление</h3><p>Россия и Беларусь — 1,5&nbsp;$, Европа — 0&nbsp;$, Норвегия, США, Канада, Швейцария — 20&nbsp;$.</p></div>
+        <span class="plus" aria-hidden="true">+</span>
+        <div class="f-item"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-truck"/></svg></span><span class="when">При получении</span><h3>Доставка по стране</h3><p>СДЭК по тарифу перевозчика. Личная встреча — без доплат.</p></div>
+        <span class="plus" aria-hidden="true">+</span>
+        <div class="f-item opt"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg></span><span class="when">По желанию</span><h3>Доп. фото</h3><p>Основной фотоотчёт бесплатно. Дополнительные фото — 15&nbsp;¥ за позицию.</p></div>
+      </div>
+      <div class="note info mt"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><p>Тарифы на доставку и дополнительные фото устанавливает логист, с которым мы работаем. Мы на них не влияем.</p></div>
+      <div class="weights">
+        <div class="card w-card">
+          <h3><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-box"/></svg></span>Физический и объёмный вес</h3>
+          <p><strong>Физический вес</strong> — сколько посылка весит на весах. <strong>Объёмный вес</strong> показывает, сколько места она занимает в машине или самолёте.</p>
+          <p>Объёмный вес = длина × ширина × высота (см) ÷ коэффициент. <strong>Оплачивается больший из двух весов.</strong> Поэтому лёгкий, но объёмный пуховик может стоить дороже тяжёлых, но компактных часов.</p>
+          <div class="divs num">
+            <div><b>÷ 8000</b>Европа</div>
+            <div><b>÷ 6000</b>Норвегия</div>
+            <div><b>÷ 5000</b>США, Канада, Швейцария</div>
+          </div>
+        </div>
+        <div class="card w-card">
+          <h3><span class="ico ico-ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>Пример расчёта доставки</h3>
+          <p>Посылка весит <strong>3&nbsp;кг</strong>, габариты <strong>25 × 30 × 40&nbsp;см</strong>, направление — Европа.</p>
+          <div class="formula-box num">
+            Объёмный вес: 25 × 30 × 40 ÷ 8000 = 3,75 ≈ 4&nbsp;кг<br>
+            4&nbsp;кг больше 3&nbsp;кг → считаем по объёмному<br>
+            4&nbsp;кг × 16&nbsp;$ = <span class="res">64&nbsp;$</span>
+          </div>
+          <p class="small">Тариф для Европы — 16&nbsp;$ за 1&nbsp;кг при весе до 5&nbsp;кг.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Тарифы -->
+  <section id="tariffs" class="band" aria-labelledby="h-tariffs">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-hat"/></svg>Тарифы логиста</span>
+        <h2 id="h-tariffs">Тарифы на доставку одежды и обуви</h2>
+        <p class="lead">Цены указаны в долларах за 1&nbsp;кг. Чем тяжелее посылка, тем ниже цена за килограмм.</p>
+      </div>
+      <div class="seg" id="tabTariffs" role="tablist" aria-label="Направления"></div>
+      <div id="tariffPanel" role="tabpanel"></div>
+      <p class="hint">Тарифы устанавливает логист и может их менять. Актуальную цену подтвердит менеджер.</p>
+    </div>
+  </section>
+
+  <!-- Калькулятор -->
+  <section id="calc" aria-labelledby="h-calc">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-crystal"/></svg>Калькулятор</span>
+        <h2 id="h-calc">Примерная стоимость доставки</h2>
+        <p class="lead">Выберите направление и товары. Считаем по типичному весу вещей, точную сумму назовём после взвешивания на складе.</p>
+      </div>
+      <div class="calc">
+        <div class="card c-panel">
+          <label class="c-label" for="cDest"><span class="n">1</span>Куда доставить</label>
+          <div class="select"><select id="cDest"></select></div>
+          <span class="c-label"><span class="n">2</span>Что в посылке</span>
+          <div class="seg seg-sm" id="cCats" role="group" aria-label="Категории товаров"></div>
+          <ul class="items" id="cItems"></ul>
+          <div class="c-actions">
+            <span class="small" id="cHint">Пример заказа: пара кроссовок и две футболки.</span>
+            <button class="linkbtn" id="cReset" type="button">Очистить</button>
+          </div>
+        </div>
+        <aside class="result" id="cResult" aria-live="polite"></aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Получение -->
+  <section id="receive" class="band" aria-labelledby="h-receive">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-pumpkin"/></svg>Получение</span>
+        <h2 id="h-receive">Как вы получите заказ в России</h2>
+        <p class="lead">Тарифы логиста для России действуют до Москвы. Дальше выбирайте удобный способ.</p>
+      </div>
+      <div class="cards3">
+        <div class="card r-card"><span class="ico ico-lg"><svg class="i" aria-hidden="true"><use href="#i-truck"/></svg></span><h3>СДЭК <span class="chip warn">оплачивается отдельно</span></h3><p>Отправим посылку в ближайший к вам пункт выдачи. Стоимость — по тарифу СДЭК.</p></div>
+        <div class="card r-card"><span class="ico ico-lg"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Личная встреча <span class="chip ok">бесплатно</span></h3><p>Передадим заказ из рук в руки по договорённости. Ничего доплачивать не нужно.</p></div>
+        <div class="card r-card"><span class="ico ico-lg"><svg class="i" aria-hidden="true"><use href="#i-bag"/></svg></span><h3>Авито Доставка <span class="chip">минимальная цена</span></h3><p>Товар вы уже оплатили, поэтому выставим его на Авито за минимальную сумму. Вы оформляете покупку с Авито Доставкой, и посылка едет к вам.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Мини-игра -->
+  <section id="game" aria-labelledby="h-game">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-gamepad"/></svg>Мини-игра</span>
+        <h2 id="h-game">Тыквопад</h2>
+        <p class="lead">Ловите тыквы и конфеты в котёл и уворачивайтесь от летучих мышей. Раунд длится минуту, чем длиннее серия — тем больше очков.</p>
+      </div>
+      <div class="game">
+        <div class="g-stage" data-game>
+          <canvas role="img" aria-label="Игровое поле: котёл ловит падающие тыквы"></canvas>
+          <div class="g-hud" aria-hidden="true">
+            <span class="g-chip"><svg class="i" aria-hidden="true"><use href="#i-pumpkin"/></svg><b data-g="score">0</b><em data-g="mul" hidden>×2</em></span>
+            <span class="g-chip"><svg class="i" aria-hidden="true"><use href="#i-timer"/></svg><b data-g="time">60</b></span>
+            <span class="g-lives" data-g="lives"></span>
+          </div>
+          <div class="g-over" data-g="over" aria-live="polite"></div>
+        </div>
+        <aside class="g-side card">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-sparkles"/></svg>Как играть</h3>
+          <ul class="g-legend">
+            <li><span class="g-ico pk"></span><b>Тыква</b><span>+1</span></li>
+            <li><span class="g-ico cd"></span><b>Конфета</b><span>+2</span></li>
+            <li><span class="g-ico gd"></span><b>Золотая тыква</b><span>+5</span></li>
+            <li><span class="g-ico bt"></span><b>Летучая мышь</b><span class="neg">−1 жизнь</span></li>
+          </ul>
+          <ul class="rules">
+            <li><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg><span>Каждые 8 пойманных подряд — множитель ×2, потом ×3. Пропустили тыкву — серия сгорает.</span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-smartphone"/></svg><span>На телефоне ведите пальцем по полю, на компьютере — мышью или стрелками.</span></li>
+          </ul>
+          <div class="g-best"><svg class="i" aria-hidden="true"><use href="#i-trophy"/></svg><span>Ваш рекорд</span><b class="num" data-g="best">0</b></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Зависит / не зависит -->
+  <section id="depends" class="band" aria-labelledby="h-dep">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-spider"/></svg>Честно о нюансах</span>
+        <h2 id="h-dep">Что зависит от нас, а что нет</h2>
+        <p class="lead">Мы отвечаем за свою часть пути и держим вас в курсе. Остальное зависит от поставщиков, перевозчиков и внешних обстоятельств.</p>
+      </div>
+      <div class="dep">
+        <div class="card dep-col ours">
+          <h3><span class="ico ico-ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>Зависит от нас</h3>
+          <ul>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-timer"/></svg></span><b>Быстрый выкуп</b><span>Закупаем товар в течение 12 часов после оплаты.</span></li>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg></span><b>Связь с поставщиком</b><span>Просим отправить товар как можно скорее и следим за отправкой.</span></li>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></span><b>Проверка на брак</b><span>Осматриваем каждую позицию на складе до отправки.</span></li>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg></span><b>Фотоотчёт</b><span>Основные фото товара присылаем бесплатно.</span></li>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></span><b>На связи</b><span>Отвечаем на вопросы на каждом этапе заказа.</span></li>
+          </ul>
+        </div>
+        <div class="card dep-col not">
+          <h3><span class="ico ico-warn"><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg></span>Не зависит от нас</h3>
+          <ul>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg></span><b>Скорость поставщика</b><span>Обычно он отправляет товар в течение 7 дней, но иногда задерживает.</span></li>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg></span><b>Тарифы и сроки логиста</b><span>Цену за килограмм, упаковку и доп. фото устанавливает перевозчик.</span></li>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-ship"/></svg></span><b>Перевозчики и таможня</b><span>Загруженность дорог, проверки на границе и работа служб доставки.</span></li>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-sparkles"/></svg></span><b>Праздники и распродажи в Китае</b><span>Китайский Новый год, «золотая неделя» в начале октября и распродажа 11.11 замедляют поставщиков и склады.</span></li>
+            <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-yuan"/></svg></span><b>Курс валют</b><span>Тарифы указаны в долларах и юанях, поэтому сумма в рублях зависит от курса.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="h-faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-potion"/></svg>FAQ</span>
+        <h2 id="h-faq">Частые вопросы</h2>
+      </div>
+      <div class="faq">
+        <details open><summary><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-wallet"/></svg></span>Почему нельзя сразу назвать точную цену доставки?<svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+          <div class="a"><p>Стоимость считается по весу посылки, а точный вес известен только когда товар приедет на склад и его упакуют. До этого можно посчитать примерную сумму в <a href="#calc" data-nav>калькуляторе</a>.</p></div></details>
+        <details><summary><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-box"/></svg></span>Что такое объёмный вес и почему он важен?<svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+          <div class="a"><p>Это вес, рассчитанный по размерам коробки: длина × ширина × высота в сантиметрах, делённые на коэффициент логиста. Если посылка лёгкая, но большая, платить придётся за объёмный вес. Подробнее — в <a href="#price" data-nav>разделе о стоимости</a>.</p></div></details>
+        <details><summary><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-hourglass"/></svg></span>Почему сроки могут сдвинуться?<svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+          <div class="a"><p>Чаще всего из-за поставщика, который отправил товар позже обычного, или из-за загруженности перевозчиков. Мы сообщаем о задержках, как только узнаём о них.</p></div></details>
+        <details><summary><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg></span>Что будет, если товар пришёл с браком?<svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+          <div class="a"><p>Каждую вещь проверяют на складе в Китае до отправки. Если найден дефект, мы разбираемся с поставщиком и связываемся с вами, чтобы вместе решить, что делать дальше.</p></div></details>
+        <details><summary><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg></span>Можно ли поторговаться?<svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+          <div class="a"><p>Да. Укажите желаемую цену в карточке товара, и мы попробуем договориться с поставщиком. Результат зависит от продавца.</p></div></details>
+        <details><summary><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg></span>Сколько стоят фотографии товара?<svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+          <div class="a"><p><strong>Основной фотоотчёт — бесплатно.</strong> Если нужны дополнительные фото, это 15&nbsp;¥ за позицию. Цену устанавливает логист, не мы.</p></div></details>
+        <details><summary><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg></span>Можно ли получить заказ быстрее?<svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+          <div class="a"><p>Да, авиадоставкой до Москвы: 5–9 дней от нашего склада. Тариф — 40&nbsp;$ за 1&nbsp;кг (36&nbsp;$ при весе от 10&nbsp;кг).</p></div></details>
+        <details data-promo-only><summary><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-pumpkin"/></svg></span>Как воспользоваться промокодом HALLOWEEN?<svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+          <div class="a"><p>Назовите код <strong>HALLOWEEN</strong> менеджеру, когда оформляете предзаказ. Код действует <span data-promo-until>до 31 октября</span> включительно.</p></div></details>
+        <details><summary><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></span>Где посмотреть отзывы?<svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+          <div class="a"><p>В канале <a href="https://t.me/ONION_SHOP_FEEDBACK" target="_blank" rel="noopener">ONION SHOP FEEDBACK</a> — там отзывы покупателей и отправки товаров.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contacts" class="band" aria-labelledby="h-contacts">
+    <div class="wrap">
+      <div class="contacts">
+        <div class="cta">
+          <span class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-bat"/></svg>Контакты</span>
+          <h2 id="h-contacts">Остались вопросы? Напишите нам</h2>
+          <p>Поможем выбрать размер, посчитаем доставку и расскажем, где сейчас ваш заказ.</p>
+          <div class="phone">
+            <span class="ico ico-lg"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <div><span class="pn num" id="phoneTxt">+7 (985) 230-00-88</span><small>Telegram, WhatsApp и звонки</small></div>
+            <button class="btn btn-ghost btn-sm" type="button" data-copy="+79852300088" data-copy-sel="#phoneTxt"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать</button>
+          </div>
+          <div class="row-btns">
+            <a class="btn" href="https://t.me/OnionShop_Support" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Написать в Telegram</a>
+            <a class="btn btn-ghost" href="https://wa.me/79852300088" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+          </div>
+        </div>
+        <ul class="links">
+          <li><a href="https://t.me/OnionShop_Support" target="_blank" rel="noopener"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg></span><span><b>Поддержка</b><small>@OnionShop_Support</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></li>
+          <li><a href="https://t.me/ONION_SHOP_OFFICIAL" target="_blank" rel="noopener"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-megaphone"/></svg></span><span><b>Официальный канал</b><small>t.me/ONION_SHOP_OFFICIAL</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></li>
+          <li><a href="https://t.me/ONION_SHOP_FEEDBACK" target="_blank" rel="noopener"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></span><span><b>Отзывы и отправки</b><small>t.me/ONION_SHOP_FEEDBACK</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></li>
+          <li><a href="https://www.tiktok.com/@onion_shop" target="_blank" rel="noopener"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg></span><span><b>TikTok</b><small>@onion_shop</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="foot-mark" aria-hidden="true">ONION SHOP</div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" data-nav><img class="logo" src="logo.png" alt="" width="34" height="34"><span>ONION SHOP</span></a>
+        <p>Предзаказы одежды, обуви и аксессуаров из Китая. Выкуп за 12&nbsp;часов, проверка на брак и бесплатный фотоотчёт.</p>
+        <div class="socials">
+          <a href="https://t.me/OnionShop_Support" target="_blank" rel="noopener" aria-label="Поддержка в Telegram"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg></a>
+          <a href="https://t.me/ONION_SHOP_OFFICIAL" target="_blank" rel="noopener" aria-label="Официальный канал"><svg class="i" aria-hidden="true"><use href="#i-megaphone"/></svg></a>
+          <a href="https://t.me/ONION_SHOP_FEEDBACK" target="_blank" rel="noopener" aria-label="Отзывы и отправки"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></a>
+          <a href="https://wa.me/79852300088" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg></a>
+          <a href="https://www.tiktok.com/@onion_shop" target="_blank" rel="noopener" aria-label="TikTok"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg></a>
+        </div>
+      </div>
+      <nav class="foot-col" aria-label="Предзаказ">
+        <h3>Предзаказ</h3>
+        <a href="#what" data-nav>Что такое предзаказ</a>
+        <a href="#how" data-nav>Как это работает</a>
+        <a href="#timing" data-nav>Сроки доставки</a>
+        <a href="#price" data-nav>Из чего складывается цена</a>
+        <a href="#receive" data-nav>Получение заказа</a>
+      </nav>
+      <nav class="foot-col" aria-label="Доставка">
+        <h3>Доставка</h3>
+        <a href="#tariffs" data-nav>Тарифы логиста</a>
+        <a href="#calc" data-nav>Калькулятор</a>
+        <a href="#depends" data-nav>Что зависит от нас</a>
+        <a href="#faq" data-nav>Частые вопросы</a>
+        <a href="#game" data-nav>Мини-игра «Тыквопад»</a>
+      </nav>
+      <nav class="foot-col" aria-label="Onion Shop в сети">
+        <h3>Мы в сети</h3>
+        <a href="https://t.me/ONION_SHOP_OFFICIAL" target="_blank" rel="noopener">Официальный канал</a>
+        <a href="https://t.me/ONION_SHOP_FEEDBACK" target="_blank" rel="noopener">Отзывы и отправки</a>
+        <a href="https://t.me/OnionShop_Support" target="_blank" rel="noopener">Поддержка @OnionShop_Support</a>
+        <a href="https://www.tiktok.com/@onion_shop" target="_blank" rel="noopener">TikTok @onion_shop</a>
+        <a href="https://wa.me/79852300088" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+      <div class="foot-col foot-contact">
+        <h3>Связаться</h3>
+        <span class="pn num" id="phoneFoot">+7 (985) 230-00-88</span>
+        <small>Telegram, WhatsApp и звонки</small>
+        <button class="btn btn-ghost btn-sm" type="button" data-copy="+79852300088" data-copy-sel="#phoneFoot"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать номер</button>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Сроки и тарифы носят справочный характер и могут меняться логистом.</span>
+      <span class="hw-only foot-hw"><svg class="i" aria-hidden="true"><use href="#i-pumpkin"/></svg>Счастливого Хэллоуина!</span>
+      <span>© 2026 Onion Shop</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="tabbar" aria-label="Навигация">
+  <a href="#top" data-nav data-tab="top"><svg class="i" aria-hidden="true"><use href="#i-pumpkin"/></svg><span>Главная</span></a>
+  <a href="#tariffs" data-nav data-tab="tariffs"><svg class="i" aria-hidden="true"><use href="#i-hat"/></svg><span>Тарифы</span></a>
+  <a href="#calc" data-nav data-tab="calc" class="tb-main"><span class="tb-fab"><svg class="i" aria-hidden="true"><use href="#i-crystal"/></svg></span><span>Расчёт</span></a>
+  <a href="#game" data-nav data-tab="game"><svg class="i" aria-hidden="true"><use href="#i-gamepad"/></svg><span>Игра</span></a>
+  <a href="#contacts" data-nav data-tab="contacts"><svg class="i" aria-hidden="true"><use href="#i-bat"/></svg><span>Контакты</span></a>
+</nav>
+
+<aside class="promo-fly" id="promoFly" hidden aria-label="Промокод на Хэллоуин">
+  <button class="pf-x" type="button" aria-label="Скрыть промокод"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+  <div class="pf-pk" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-pumpkin"/></svg></div>
+  <div class="pf-body">
+    <span class="pf-k">Хэллоуин в Onion Shop</span>
+    <button class="pf-code" type="button" id="pfCode" aria-label="Скопировать промокод HALLOWEEN"><b>HALLOWEEN</b><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg></button>
+    <span class="pf-perk" id="pfPerk"></span>
+    <span class="pf-t" id="pfTime"></span>
+  </div>
+  <svg class="pf-bat" viewBox="0 0 100 42" aria-hidden="true"><use href="#bat-shape"/></svg>
+</aside>
+<button class="pf-mini" id="pfMini" type="button" hidden aria-label="Показать промокод на Хэллоуин"></button>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="globe.js"></script>
+<script src="app.js"></script>
+<script src="game.js"></script>
+<script>if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
+
+</body>
+</html>
