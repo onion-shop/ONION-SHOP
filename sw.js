@@ -1,8 +1,8 @@
 /* Onion Shop · сервис-воркер: сайт открывается без интернета из последней сохранённой версии.
    Сначала всегда берётся свежая версия из сети, поэтому ваши правки видны сразу. */
 var CACHE = 'onion-shop-v1';
-var CORE = ['./', './index.html', './css/style.css', './js/data.js', './js/security.js', './js/qr.js', './js/globe.js', './js/app.js',
-  './assets/logo.png', './assets/favicon.png', './assets/icon-192.png', './manifest.webmanifest'];
+var CORE = ['./', './index.html', './style.css', './data.js', './security.js', './qr.js', './globe.js', './app.js',
+  './logo.png', './favicon.png', './icon-192.png', './manifest.webmanifest'];
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(CORE); }).then(function () { return self.skipWaiting(); }));
